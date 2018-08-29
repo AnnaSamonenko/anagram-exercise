@@ -1,6 +1,7 @@
 package as;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Main3 {
@@ -25,13 +26,14 @@ public class Main3 {
     private static class ClassWithBug {
 
         private final List<Integer> intsList = new ArrayList<>();
+        private List<Integer> copy = new ArrayList<>(intsList);
 
         public ClassWithBug(final List<Integer> intsList) {
             this.intsList.addAll(intsList);
         }
 
         public void removeElementsByFilter(Filter f) {
-            for (int i = 0; i < intsList.size(); i++) {
+            for (int i = intsList.size() - 1; i >= 0; i--) {
                 Integer value = intsList.get(i);
                 if (f.filter(value)) {
                     intsList.remove(i);
@@ -42,6 +44,5 @@ public class Main3 {
         public List<Integer> getInts() {
             return intsList;
         }
-
     }
 }

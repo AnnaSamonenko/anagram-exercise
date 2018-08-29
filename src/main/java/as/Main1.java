@@ -1,7 +1,9 @@
 package as;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main1 {
     public static void main(String[] args) {
@@ -24,20 +26,20 @@ public class Main1 {
     private static class ClassWithBug {
 
         private final List<Integer> intsList = new ArrayList<>();
-        private List<Integer> toRemove = new ArrayList<>();
 
         public ClassWithBug(final List<Integer> intsList) {
             this.intsList.addAll(intsList);
         }
 
         public void removeElementsByFilter(Filter f) {
-            for (int i = 0; i < intsList.size(); i++) {
+            for (int i = 0; i < intsList.size(); ) {
                 Integer value = intsList.get(i);
                 if (f.filter(value)) {
-                    toRemove.add(value);
+                    intsList.remove(i);
+                } else {
+                    i++;
                 }
             }
-            intsList.removeAll(toRemove);
         }
 
         public List<Integer> getInts() {
