@@ -9,8 +9,6 @@ public class Main {
         long startTime = System.nanoTime();
         String string1 = GenerateString.randomString(100000);
         String string2 = GenerateString.randomString(100000);
-//        String string1 = "abcdef";
-//        String string2 = "aacdfg";
 
         try {
             verifyOnAnagrams(string1, string2);
@@ -60,5 +58,4 @@ public class Main {
             }
         }
     }
-
 }
