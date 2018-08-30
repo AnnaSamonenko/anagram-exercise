@@ -12,21 +12,21 @@ public class Anagram {
             throws IllegalLengthOfAnagramException {
         if (str1.length() != str2.length())
             throw new IllegalLengthOfAnagramException("Length of the strings is not equal!");
-        Map<Character, Integer> mapOfCharacters1 = new HashMap<>();
-        Map<Character, Integer> mapOfCharacters2 = new HashMap<>();
+        Map<Character, Integer> mapOfCharactersFromString1 = new HashMap<>();
+        Map<Character, Integer> mapOfCharactersFromString2 = new HashMap<>();
 
-        createCharMap(mapOfCharacters1, str1);
-        createCharMap(mapOfCharacters2, str2);
+        createCharMap(mapOfCharactersFromString1, str1);
+        createCharMap(mapOfCharactersFromString2, str2);
 
-        Set<Character> setOfKeys = mapOfCharacters1.keySet();
+        Set<Character> setOfKeys = mapOfCharactersFromString1.keySet();
         for (Character ch : setOfKeys) {
-            Integer amountOfCharIn1 = mapOfCharacters1.get(ch);
-            Integer amountOfCharIn2 = mapOfCharacters2.get(ch);
-            if (amountOfCharIn2 != null)
-                mapOfCharacters1.put(ch, amountOfCharIn1 - amountOfCharIn2);
+            Integer amountOfCharsInString1 = mapOfCharactersFromString1.get(ch);
+            Integer amountOfCharsInString2 = mapOfCharactersFromString2.get(ch);
+            if (amountOfCharsInString2 != null)
+                mapOfCharactersFromString1.put(ch, amountOfCharsInString1 - amountOfCharsInString2);
         }
 
-        Map<Character, Integer> result = mapOfCharacters1.entrySet().stream()
+        Map<Character, Integer> result = mapOfCharactersFromString1.entrySet().stream()
                 .filter(x -> x.getValue() > 0)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
