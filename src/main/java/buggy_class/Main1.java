@@ -1,11 +1,9 @@
-package as;
+package buggy_class;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class Main3 {
-
+public class Main1 {
     public static void main(String[] args) {
         List<Integer> intsList = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
@@ -17,26 +15,27 @@ public class Main3 {
         System.out.println(buggy.getInts());
     }
 
-    private static interface Filter {
+    private interface Filter {
 
-        public boolean filter(Integer i);
+        boolean filter(Integer i);
 
     }
 
     private static class ClassWithBug {
 
         private final List<Integer> intsList = new ArrayList<>();
-        private List<Integer> copy = new ArrayList<>(intsList);
 
         public ClassWithBug(final List<Integer> intsList) {
             this.intsList.addAll(intsList);
         }
 
         public void removeElementsByFilter(Filter f) {
-            for (int i = intsList.size() - 1; i >= 0; i--) {
+            for (int i = 0; i < intsList.size(); ) {
                 Integer value = intsList.get(i);
                 if (f.filter(value)) {
                     intsList.remove(i);
+                } else {
+                    i++;
                 }
             }
         }
@@ -46,3 +45,4 @@ public class Main3 {
         }
     }
 }
+

@@ -1,4 +1,4 @@
-package as2;
+package anagram;
 
 import java.util.*;
 import java.util.stream.Collectors;

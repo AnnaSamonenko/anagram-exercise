@@ -1,11 +1,11 @@
-package as;
+package buggy_class;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
-public class Main1 {
+public class Main2 {
+
     public static void main(String[] args) {
         List<Integer> intsList = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
@@ -17,9 +17,9 @@ public class Main1 {
         System.out.println(buggy.getInts());
     }
 
-    private static interface Filter {
+    private interface Filter {
 
-        public boolean filter(Integer i);
+        boolean filter(Integer i);
 
     }
 
@@ -32,12 +32,11 @@ public class Main1 {
         }
 
         public void removeElementsByFilter(Filter f) {
-            for (int i = 0; i < intsList.size(); ) {
-                Integer value = intsList.get(i);
+            Iterator<Integer> it = intsList.listIterator();
+            while (it.hasNext()) {
+                Integer value = it.next();
                 if (f.filter(value)) {
-                    intsList.remove(i);
-                } else {
-                    i++;
+                    it.remove();
                 }
             }
         }
@@ -45,6 +44,9 @@ public class Main1 {
         public List<Integer> getInts() {
             return intsList;
         }
+
     }
 }
+
+
 

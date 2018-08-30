@@ -1,7 +1,5 @@
-package as;
+package anagram;
 
-import as2.Anagram;
-import as2.IllegalLengthOfAnagramException;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package as2;
+package anagram;
 
 public class IllegalLengthOfAnagramException extends Exception {
 
