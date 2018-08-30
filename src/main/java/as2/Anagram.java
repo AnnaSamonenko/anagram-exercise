@@ -8,7 +8,8 @@ public class Anagram {
     private Anagram() {
     }
 
-    public static Map<Character, Integer> verifyOnAnagrams(String str1, String str2) throws IllegalLengthOfAnagramException {
+    public static Map<Character, Integer> verifyOnAnagrams(String str1, String str2)
+            throws IllegalLengthOfAnagramException {
         if (str1.length() != str2.length())
             throw new IllegalLengthOfAnagramException("Length of the strings is not equal!");
         Map<Character, Integer> mapOfCharacters1 = new HashMap<>();

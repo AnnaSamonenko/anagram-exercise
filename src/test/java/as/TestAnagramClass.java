@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class TestAnagramClass {
 
-    //sunny
     @Test
     public void testVerifyAnagramMethodPositive() {
 
@@ -30,7 +29,6 @@ public class TestAnagramClass {
         }
     }
 
-    //rainy
     @Test(expected = IllegalLengthOfAnagramException.class)
     public void testVerifyAnagramMethodNegative() throws IllegalLengthOfAnagramException {
 
